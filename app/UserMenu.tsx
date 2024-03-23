@@ -1,4 +1,4 @@
-import { useAuthAPI, useCurrentUser } from '@/_schema';
+import { useAuthAPI, useCurrentUser } from '@/db';
 import {
   ActionIcon,
   Avatar,

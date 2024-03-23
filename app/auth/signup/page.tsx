@@ -1,7 +1,8 @@
 'use client';
 
-import AppLogo from '@/_components/App/AppLogo';
-import { UserSignUpSchema, useAuthAPI } from '@/_schema';
+import AppLogo from '@/components/App/AppLogo';
+import { useAuthAPI } from '@/db';
+import { UserSignUpSchema } from '@/schema';
 import { Anchor, Paper, Stack, Text } from '@mantine/core';
 import { RNGForm } from '@rng-apps/forms';
 import { useRouter } from 'next-nprogress-bar';

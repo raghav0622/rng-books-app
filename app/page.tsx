@@ -3,8 +3,8 @@
 import { ScrollArea, Stack } from '@mantine/core';
 import { SlotContent, SlotView, useDevice } from '@rng-apps/forms';
 
-import CompaniesList from '@/_components/Company/Company-List';
-import CompanyNewModal from '@/_components/Drawers/Drawer-Company-Create';
+import CompaniesList from '@/components/Company/Company-List';
+import CompanyNewModal from '@/components/Drawers/Drawer-Company-Create';
 
 export default function Index() {
   const { isLg, isLandscape } = useDevice();

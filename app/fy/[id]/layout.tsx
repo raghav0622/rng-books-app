@@ -1,6 +1,6 @@
 'use client';
 
-import FYLayout from '@/_components/Layout/Layout';
+import FYLayout from '@/components/Layout/Layout';
 import React from 'react';
 
 export default function FYLayoutComponent({

@@ -1,8 +1,8 @@
 'use client';
 
-import GroupCard from '@/_components/Group/Group-Report';
-import PageContent from '@/_components/Layout/PageContent';
-import { useFYStateDerivatives } from '@/_schema';
+import GroupCard from '@/components/Group/Group-Report';
+import PageContent from '@/components/Layout/PageContent';
+import { useFYStateDerivatives } from '@/state';
 
 export default function FYHomePage() {
   const { bsGroups, capitalGroups } = useFYStateDerivatives();

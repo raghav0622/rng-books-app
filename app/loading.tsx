@@ -1,7 +1,7 @@
 'use client';
 
 function AppLoader() {
-  return <div>loading...</div>;
+  return <div>application loading...</div>;
 }
 
 export default AppLoader;

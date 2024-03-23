@@ -13,7 +13,9 @@
     ".gitignore": true,
     ".prettierignore": true,
     ".prettierrc": true,
-    "next-env.d.ts": true
+    "next-env.d.ts": true,
+    ".eslintrc.json": true,
+    "postcss.config.js": true
   },
   "hide-files.files": [
     "package-lock.json",
@@ -23,7 +25,9 @@
     ".gitignore",
     ".prettierignore",
     ".prettierrc",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    ".eslintrc.json",
+    "postcss.config.js"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,

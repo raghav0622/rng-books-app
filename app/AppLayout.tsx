@@ -1,10 +1,9 @@
 'use client';
+import AppLogo from '@/components/App/AppLogo';
 import { Divider, Paper } from '@mantine/core';
 import { SlotView } from '@rng-apps/forms';
 import * as React from 'react';
 import { UserMenu } from './UserMenu';
-
-import AppLogo from '@/_components/App/AppLogo';
 
 const AppLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (

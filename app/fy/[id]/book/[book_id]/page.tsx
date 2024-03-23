@@ -1,8 +1,8 @@
 'use client';
 
-import PageContent from '@/_components/Layout/PageContent';
-import BookPageByID from '@/_components/Pages/Page-BookByID';
-import { useFYState } from '@/_schema';
+import PageContent from '@/components/Layout/PageContent';
+import BookPageByID from '@/components/Pages/Page-BookByID';
+import { useFYState } from '@/state';
 import { redirect } from 'next/navigation';
 
 export default function BookByIDPage({
