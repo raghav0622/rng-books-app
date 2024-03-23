@@ -11,7 +11,7 @@ import { IconTrashXFilled } from '@tabler/icons-react';
 import { useRouter } from 'next-nprogress-bar';
 import React from 'react';
 import EditCarryTransactionModal from './EditCarryTransaction';
-import EditTransactionInBookModal from './EditTransactionInBook';
+// import EditTransactionInBookModal from './EditTransactionInBook';
 import useReadTransaction from './useReadTransaction';
 
 const TransactionActions: React.FC<{
@@ -32,9 +32,7 @@ const TransactionActions: React.FC<{
           dateNotEditbale={serial === 1}
         />
       )}
-      {transaction.transactionType !== 'carry-entry' && (
-        <EditTransactionInBookModal transaction={transaction} />
-      )}
+
       <RNGActionIcon
         tooltip="Delete Transaction"
         onClick={() => removeTransaction(transaction.id)}
