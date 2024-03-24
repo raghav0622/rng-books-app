@@ -1,3 +1,5 @@
+'use client';
+
 export const groupedit = 'pending';
 // import { CreateGroupSchema, GroupDerived } from '@/schema';
 // import { useFYStateDerivatives, useGroupActions } from '@/state';

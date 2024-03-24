@@ -1,3 +1,5 @@
+'use client';
+
 import { Book } from '@/schema';
 import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
 import FormBookEditLegder from '../Forms/Form-Book-Edit-Ledger';

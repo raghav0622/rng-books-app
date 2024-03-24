@@ -1,3 +1,4 @@
+'use client';
 import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
 import FormBookCreate from '../Forms/Form-Book-Create';
 

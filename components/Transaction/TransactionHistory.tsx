@@ -1,3 +1,5 @@
+'use client';
+
 import { useFYState, useFYStateDerivatives } from '@/state';
 import { Alert, Divider, Group, Paper, Text } from '@mantine/core';
 import { RNGButton } from '@rng-apps/forms';

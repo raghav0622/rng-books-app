@@ -1,3 +1,5 @@
+'use client';
+
 import { useAuthAPI, useCurrentUser } from '@/db';
 import {
   ActionIcon,

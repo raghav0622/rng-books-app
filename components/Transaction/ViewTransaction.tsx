@@ -1,3 +1,5 @@
+'use client';
+
 import { useFYState, useGetDerived } from '@/state';
 import {
   Anchor,

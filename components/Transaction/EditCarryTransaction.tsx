@@ -1,4 +1,6 @@
+'use client';
 import { Transaction } from '@/schema';
+
 import { useDisclosure } from '@mantine/hooks';
 
 const EditCarryTransactionModal: React.FC<{

@@ -1,3 +1,5 @@
+'use client';
+
 import { useTransactionState } from '@/state';
 import { Button } from '@mantine/core';
 import EditCarryTransactionModal from './EditCarryTransaction';

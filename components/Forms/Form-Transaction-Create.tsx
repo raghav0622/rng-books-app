@@ -1,3 +1,5 @@
+'use client';
+
 import { CreateTransactionSchema } from '@/schema';
 import {
   useFYState,

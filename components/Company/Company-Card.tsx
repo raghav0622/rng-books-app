@@ -1,3 +1,5 @@
+'use client';
+
 import { useCompanyDB, useFYDB } from '@/db';
 import { Company, CompanyFYMeta, InitiateFYSchema } from '@/schema';
 import {

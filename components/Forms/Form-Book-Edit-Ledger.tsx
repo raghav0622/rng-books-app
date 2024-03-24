@@ -1,3 +1,5 @@
+'use client';
+
 import { Book, CreateLedgerBookSchema } from '@/schema';
 import { useBookActions, useFYStateDerivatives } from '@/state';
 

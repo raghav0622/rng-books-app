@@ -1,3 +1,5 @@
+'use client';
+
 import { Book, Group, GroupDerived } from '@/schema';
 import { useFYState, useGetDerived } from '@/state';
 import {

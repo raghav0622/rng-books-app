@@ -1,3 +1,5 @@
+'use client';
+
 import { UserContext, useUserResource } from '@/db';
 import { User } from '@/schema';
 import React from 'react';

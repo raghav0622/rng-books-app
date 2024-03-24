@@ -7,7 +7,6 @@ import { getFirestore } from 'firebase/firestore';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { type ThemeProviderProps } from 'next-themes/dist/types';
-import dynamic from 'next/dynamic';
 import React, { PropsWithChildren } from 'react';
 import {
   AuthProvider,
@@ -26,16 +25,6 @@ const firebaseConfig = {
   appId: '1:49511399500:web:12a4b9a4dffe319318f4e9',
   measurementId: 'G-PYZJENTB63',
 };
-
-const NoSSRWrapper = dynamic(
-  () =>
-    Promise.resolve((props: React.PropsWithChildren) => (
-      <React.Fragment>{props.children}</React.Fragment>
-    )),
-  {
-    ssr: false,
-  }
-);
 
 const FirebaseProviders: React.FC<PropsWithChildren> = ({ children }) => {
   const app = useFirebaseApp();
@@ -70,20 +59,18 @@ export default function AppProviders({
   children: React.ReactNode;
 }) {
   return (
-    <NoSSRWrapper>
-      <RecoilRoot>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          disableTransitionOnChange
-        >
-          <Notifications position="bottom-center" />
-          <SlotsProvider>
-            <ProgressBar height="4px" options={{ showSpinner: false }} />
-            <AppFirebaseWrapper>{children}</AppFirebaseWrapper>
-          </SlotsProvider>
-        </ThemeProvider>
-      </RecoilRoot>
-    </NoSSRWrapper>
+    <RecoilRoot>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        disableTransitionOnChange
+      >
+        <Notifications position="bottom-center" />
+        <SlotsProvider>
+          <ProgressBar height="4px" options={{ showSpinner: false }} />
+          <AppFirebaseWrapper>{children}</AppFirebaseWrapper>
+        </SlotsProvider>
+      </ThemeProvider>
+    </RecoilRoot>
   );
 }

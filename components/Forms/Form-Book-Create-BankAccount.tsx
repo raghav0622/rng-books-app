@@ -1,3 +1,5 @@
+'use client';
+
 import { useUserAutoCompleteDataDB } from '@/db';
 import { CreateBankAccountSchema, Group } from '@/schema';
 import { useBookActions } from '@/state';

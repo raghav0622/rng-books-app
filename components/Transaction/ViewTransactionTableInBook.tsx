@@ -1,3 +1,5 @@
+'use client';
+
 import { BookTransaction } from '@/schema';
 import {
   useFYState,

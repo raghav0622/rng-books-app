@@ -1,3 +1,5 @@
+'use client';
+
 import { useCompanyDB } from '@/db';
 import { Alert } from '@mantine/core';
 import { lazy } from 'react';

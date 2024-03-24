@@ -1,3 +1,5 @@
+'use client';
+
 import { Book, Group } from '@/schema';
 import {
   Anchor,

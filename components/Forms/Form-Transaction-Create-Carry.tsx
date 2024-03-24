@@ -1,3 +1,5 @@
+'use client';
+
 import { useTransactionActions } from '@/state';
 import { RNGForm, number } from '@rng-apps/forms';
 import { z } from 'zod';

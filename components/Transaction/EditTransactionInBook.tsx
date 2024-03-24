@@ -1,3 +1,5 @@
+'use client';
+
 export const helladof = 'sdfa';
 // import { Transaction, UpdateTransactionSchema } from '@/schema';
 // import { useFYState, useTransactionActions } from '@/state';

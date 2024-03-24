@@ -1,3 +1,5 @@
+'use client';
+
 import { useGetDerived } from '@/state';
 import {
   Alert,

@@ -1,3 +1,5 @@
+'use client';
+
 import { Book } from '@/schema';
 import { useGetDerived } from '@/state';
 import { Anchor } from '@mantine/core';

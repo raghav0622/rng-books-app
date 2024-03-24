@@ -1,3 +1,5 @@
+'use client';
+
 import { Group, GroupSchema } from '@/schema';
 import { useFYState } from '@/state';
 import { RNGForm } from '@rng-apps/forms';

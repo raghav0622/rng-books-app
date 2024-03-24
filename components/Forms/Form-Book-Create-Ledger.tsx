@@ -1,3 +1,5 @@
+'use client';
+
 import { CreateLedgerBookSchema, Group } from '@/schema';
 import { useBookActions } from '@/state';
 import { RNGForm } from '@rng-apps/forms';

@@ -1,3 +1,4 @@
+'use client';
 import { Book } from '@/schema';
 import { useBookActions } from '@/state';
 import { RNGButton } from '@rng-apps/forms';

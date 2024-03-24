@@ -1,3 +1,5 @@
+'use client';
+
 import { CreateGroupSchema } from '@/schema';
 import { useFYStateDerivatives, useGroupActions } from '@/state';
 import { RNGForm } from '@rng-apps/forms';

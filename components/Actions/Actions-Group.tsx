@@ -1,3 +1,4 @@
+'use client';
 const ActionsGroup: React.FC<{ id: string; page?: boolean }> = ({
   id,
   page,

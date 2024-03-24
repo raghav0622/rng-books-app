@@ -1,3 +1,5 @@
+'use client';
+
 import { useCompanyDB } from '@/db';
 import { CreateCompanySchema } from '@/schema';
 import { RNGForm } from '@rng-apps/forms';

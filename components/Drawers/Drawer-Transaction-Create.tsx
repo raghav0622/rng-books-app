@@ -1,3 +1,5 @@
+'use client';
+
 import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
 import FormTransactionCreate from '../Forms/Form-Transaction-Create';
 

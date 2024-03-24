@@ -1,3 +1,5 @@
+'use client';
+
 import { useCurrentUser } from '@/db';
 import { modals } from '@mantine/modals';
 import { FormError, RNGForm, string } from '@rng-apps/forms';
