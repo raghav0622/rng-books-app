@@ -3,7 +3,7 @@ import {
   useAtomStateAPI,
   useIdsStateAPI,
 } from '@rng-apps/forms';
-import { sortBy } from 'lodash';
+import { orderBy, sortBy } from 'lodash';
 import {
   atom,
   atomFamily,
@@ -210,6 +210,91 @@ export const GroupDerivedSelector = selector<Array<GroupDerived>>({
   },
 });
 
+export const FYDerivedSelector = selector<{
+  company: Company;
+  transactions: Array<TransactionDerived>;
+  books: Array<BookDerived>;
+  groups: Array<GroupDerived>;
+  baseUrl: string;
+  bsGroups: Array<Group>;
+  capitalGroups: Array<Group>;
+  selfBooks: Array<Book>;
+  ledgers: Array<Book>;
+  accounts: Array<Book>;
+  createGroupOptions: Array<Group>;
+  allEntries: Array<TransactionDerived>;
+  cashEntries: Array<TransactionDerived>;
+  otherEntries: Array<TransactionDerived>;
+  ledgerEntries: Array<TransactionDerived>;
+  selfEntries: Array<TransactionDerived>;
+}>({
+  key: 'fy-derived-selector',
+  get({ get }) {
+    const fy = get(FYSelector);
+    const company = get(CurrentCompanyAtom);
+    const transactions = get(TransactionsDerivedSelector);
+    const books = get(BooksDerivedSelector);
+    const groups = get(GroupDerivedSelector);
+    const baseUrl = `/fy/${fy.id}`;
+    const bsGroups = orderBy(
+      fy.groups.filter((group) => group && group.type === 'Account'),
+      ['groupLevel'],
+      ['asc']
+    );
+    const capitalGroups = orderBy(
+      fy.groups.filter((group) => group && group.type === 'Ledger'),
+      ['groupLevel'],
+      ['asc']
+    );
+    const selfBooks = fy.books.filter((b) => b.isSelfBook);
+    const ledgers = fy.books.filter((b) => b.type === 'Ledger');
+    const accounts = fy.books.filter((b) => b.type === 'Account');
+    const createGroupOptions = fy.groups.filter(
+      (g) => g.childGroupsPossible === true
+    );
+
+    const primaryTransactions = transactions.filter(
+      (t) => selfBooks.findIndex((b) => b.id === t.primaryBook.id) !== -1
+    );
+
+    const cashEntries = primaryTransactions.filter(
+      (t) => t.primaryBook.id === 'cash-book'
+    );
+
+    const selfEntries = primaryTransactions.filter(
+      (t) => t.transactionType === 'self-to-self-entry'
+    );
+
+    const otherEntries = primaryTransactions.filter(
+      (t) => t.transactionType === 'self-to-other-entry'
+    );
+    const ledgerEntries = primaryTransactions.filter(
+      (t) => t.transactionType === 'leger-entry'
+    );
+
+    return {
+      company,
+      transactions,
+      books,
+      groups,
+      baseUrl,
+      bsGroups,
+      capitalGroups,
+      selfBooks,
+      ledgers,
+      accounts,
+      createGroupOptions,
+      allEntries: primaryTransactions,
+      cashEntries,
+      otherEntries,
+      ledgerEntries,
+      selfEntries,
+    };
+  },
+});
+
+export const useFYDerivedState = () => useRecoilValue(FYDerivedSelector);
+
 export const useTransactionState = () => {
   const {
     addID,
@@ -371,6 +456,7 @@ export const useCompanyState = () => {
     company: value,
   };
 };
+
 export const useFYDBState = () => {
   const { resetAtom, setAtom, value } = useAtomStateAPI(FYDBAtom);
 
