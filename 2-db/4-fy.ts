@@ -96,7 +96,7 @@ export const initiateFYAction = (
       type: 'Account',
       description: null,
       childCount: 0,
-      childGroupsPossible: false,
+      childGroupsPossible: true,
     };
     return payload;
   });

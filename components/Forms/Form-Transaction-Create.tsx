@@ -1,11 +1,7 @@
 'use client';
 
 import { CreateTransactionSchema } from '@/schema';
-import {
-  useFYState,
-  useFYStateDerivatives,
-  useTransactionActions,
-} from '@/state';
+import { useFYDerivedState, useTransactionActions } from '@/state';
 import { RNGForm, string } from '@rng-apps/forms';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -14,8 +10,7 @@ import { z } from 'zod';
 const FormTransactionCreate: React.FC<{
   onSuccess?: () => void;
 }> = ({ onSuccess }) => {
-  const { fy } = useFYState();
-  const { ledgers, selfBooks } = useFYStateDerivatives();
+  const { ledgers, selfBooks, fy } = useFYDerivedState();
   const pathname = usePathname().split('/');
   const pathBook = pathname[3] === 'book' ? pathname[4] : undefined;
   const isPathBookLedger = ledgers.findIndex((b) => b.id === pathBook) !== -1;

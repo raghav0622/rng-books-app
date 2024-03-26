@@ -35,7 +35,7 @@ const FYProvider: React.FC<PropsWithChildren<{ id: string }>> = ({
 
   const { populate, dePopulate } = usePopulateAndDepopulateState();
   const { setFYDB } = useFYDBState();
-  const { fy: fyState } = useFYState();
+  const fyState = useFYState();
   useEffect(() => {
     if (company && fy) {
       populate(company, fy);

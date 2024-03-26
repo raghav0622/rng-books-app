@@ -227,6 +227,7 @@ export const FYDerivedSelector = selector<{
   otherEntries: Array<TransactionDerived>;
   ledgerEntries: Array<TransactionDerived>;
   selfEntries: Array<TransactionDerived>;
+  fy: CompanyFY;
 }>({
   key: 'fy-derived-selector',
   get({ get }) {
@@ -246,6 +247,7 @@ export const FYDerivedSelector = selector<{
       ['groupLevel'],
       ['asc']
     );
+
     const selfBooks = fy.books.filter((b) => b.isSelfBook);
     const ledgers = fy.books.filter((b) => b.type === 'Ledger');
     const accounts = fy.books.filter((b) => b.type === 'Account');
@@ -254,7 +256,9 @@ export const FYDerivedSelector = selector<{
     );
 
     const primaryTransactions = transactions.filter(
-      (t) => selfBooks.findIndex((b) => b.id === t.primaryBook.id) !== -1
+      (t) =>
+        selfBooks.findIndex((b) => b.id === t.primaryBook.id) !== -1 ||
+        t.transactionType === 'carry-entry'
     );
 
     const cashEntries = primaryTransactions.filter(
@@ -289,6 +293,7 @@ export const FYDerivedSelector = selector<{
       otherEntries,
       ledgerEntries,
       selfEntries,
+      fy,
     };
   },
 });
@@ -467,20 +472,7 @@ export const useFYDBState = () => {
   };
 };
 
-export const useFYStateBase = () => {
-  const state = useRecoilValue(FYSelector);
-
-  return state;
-};
-
-export const useFYState = () => {
-  const { fyDB } = useFYDBState();
-  const { company } = useCompanyState();
-  const state = useRecoilValue(FYSelector);
-  const baseUrl = `/fy/${state.id}`;
-
-  return { fy: state, fyDB, company, baseUrl };
-};
+export const useFYState = () => useRecoilValue(FYSelector);
 
 export const useGetDerived = () => {
   const getGroup = useRecoilCallback(({ snapshot }) => (id: string) => {

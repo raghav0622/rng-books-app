@@ -4,7 +4,7 @@ import {
   useCompanyState,
   useFYDBState,
   useFYMetaState,
-  useFYStateBase,
+  useFYState,
   useGroupState,
   useTransactionState,
 } from '../1-atoms';
@@ -33,7 +33,7 @@ export const usePopulateAndDepopulateState = () => {
   const { setFYMetaState: populateFYMeta, resetFYMetaStae: depopulateFYMeta } =
     useFYMetaState();
 
-  const fyState = useFYStateBase();
+  const fyState = useFYState();
 
   const populate = async (company: Company, fy: CompanyFY) => {
     setCompany(company);

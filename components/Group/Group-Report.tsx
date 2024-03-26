@@ -1,7 +1,7 @@
 'use client';
 
 import { Book, Group, GroupDerived } from '@/schema';
-import { useFYState, useGetDerived } from '@/state';
+import { useFYDerivedState, useGetDerived } from '@/state';
 import {
   Button,
   Card,
@@ -94,7 +94,7 @@ const Entry: React.FC<{
 };
 
 const BookEntry: React.FC<{ book: Book }> = ({ book }) => {
-  const { baseUrl } = useFYState();
+  const { baseUrl } = useFYDerivedState();
 
   if (book.id === 'capital-from-previous-year') {
     return (

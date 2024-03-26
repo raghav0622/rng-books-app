@@ -1,62 +1,32 @@
 'use client';
 
-import { useFYState, useFYStateDerivatives } from '@/state';
+import { useFYDerivedState } from '@/state';
 import { Alert, Divider, Group, Paper, Text } from '@mantine/core';
 import { RNGButton } from '@rng-apps/forms';
 import { useMemo, useState } from 'react';
 import ViewTransaction from './ViewTransaction';
 
 function TransactionHistory() {
-  const { fy } = useFYState();
-  const { selfBooks } = useFYStateDerivatives();
+  const {
+    fy,
+    cashEntries,
+    allEntries,
+    otherEntries,
+    ledgerEntries,
+    selfEntries,
+  } = useFYDerivedState();
   const [view, setView] = useState<
     'all' | 'self' | 'ledger' | 'cash' | 'other'
   >('all');
 
   const transactions = useMemo(() => {
-    const print: string[] = [];
-
-    if (view === 'all') {
-      fy.transactions.forEach((t) => {
-        if (t.transactionType === 'carry-entry') print.push(t.id);
-        if (t.transactionType === 'leger-entry') print.push(t.id);
-        if (
-          t.transactionType === 'self-to-other-entry' &&
-          selfBooks.findIndex((b) => b.id === t.primaryBook) !== -1
-        ) {
-          print.push(t.id);
-        }
-        if (t.transactionType === 'self-to-self-entry' && t.amount >= 0) {
-          print.push(t.id);
-        }
-      });
-    }
-    if (view === 'cash') {
-      fy.transactions.forEach((t) => {
-        t.primaryBook === 'cash-book' && print.push(t.id);
-      });
-    }
-    if (view === 'self') {
-      fy.transactions.forEach((t) => {
-        t.transactionType === 'self-to-self-entry' && print.push(t.id);
-      });
-    }
-    if (view === 'other') {
-      fy.transactions.forEach((t) => {
-        t.transactionType === 'self-to-other-entry' &&
-          t.amount >= 0 &&
-          print.push(t.id);
-      });
-    }
-
-    if (view === 'ledger') {
-      fy.transactions.forEach((t) => {
-        t.transactionType === 'leger-entry' && print.push(t.id);
-      });
-    }
-
-    return print.reverse();
-  }, [fy.transactions, selfBooks, view]);
+    if (view === 'all') return allEntries;
+    if (view === 'cash') return cashEntries;
+    if (view === 'self') return selfEntries;
+    if (view === 'other') return otherEntries;
+    if (view === 'ledger') return ledgerEntries;
+    return [];
+  }, [allEntries, cashEntries, ledgerEntries, otherEntries, selfEntries, view]);
 
   return (
     <>
@@ -103,8 +73,8 @@ function TransactionHistory() {
       </Paper>
       {transactions.length > 0 ? (
         <>
-          {transactions.map((t) => (
-            <ViewTransaction key={t} id={t} />
+          {transactions.toReversed().map((t) => (
+            <ViewTransaction key={t.id + 'print'} transaction={t} />
           ))}
         </>
       ) : (

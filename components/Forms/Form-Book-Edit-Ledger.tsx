@@ -1,7 +1,7 @@
 'use client';
 
 import { Book, CreateLedgerBookSchema } from '@/schema';
-import { useBookActions, useFYStateDerivatives } from '@/state';
+import { useBookActions, useFYDerivedState } from '@/state';
 
 import { RNGForm } from '@rng-apps/forms';
 import React from 'react';
@@ -10,7 +10,7 @@ const FormBookEditLegder: React.FC<{
   onSuccess?: () => void;
   previous: Book;
 }> = ({ onSuccess, previous }) => {
-  const { capitalGroups } = useFYStateDerivatives();
+  const { capitalGroups } = useFYDerivedState();
   const { editLedger } = useBookActions();
   return (
     <RNGForm

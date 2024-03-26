@@ -1,6 +1,6 @@
 'use client';
 
-import { useFYState, useGetDerived } from '@/state';
+import { useFYDerivedState, useGetDerived } from '@/state';
 import {
   Badge,
   Container,
@@ -15,12 +15,14 @@ import DrawerTransacttionCreateCarry from '../Drawers/Drawer-Transaction-Create-
 import ViewTransactionTableInBook from '../Transaction/ViewTransactionTableInBook';
 
 function PageBookById({ book_id: id }: { book_id: string }) {
-  const { baseUrl } = useFYState();
+  const { baseUrl } = useFYDerivedState();
   const { getBook } = useGetDerived();
   const theme = useMantineTheme();
+  if (id === 'capital-from-previous-year') redirect(baseUrl);
 
   const book = getBook(id);
   // const { isDesktop } = useDevice();
+
   if (!book) redirect(baseUrl);
 
   return (

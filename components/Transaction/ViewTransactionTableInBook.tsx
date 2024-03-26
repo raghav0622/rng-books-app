@@ -2,7 +2,7 @@
 
 import { BookTransaction } from '@/schema';
 import {
-  useFYState,
+  useFYDerivedState,
   useGetDerived,
   useTransactionActions,
   useTransactionState,
@@ -53,7 +53,7 @@ const TransasctionEntryMdAbove: React.FC<{
   transaction: BookTransaction;
 }> = ({ viewer, transaction }) => {
   const router = useRouter();
-  const { baseUrl } = useFYState();
+  const { baseUrl } = useFYDerivedState();
 
   const { primary, secondary } = useReadTransaction(
     viewer,

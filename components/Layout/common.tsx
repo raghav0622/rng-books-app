@@ -1,5 +1,5 @@
 'use client';
-import { useFYActions, useFYState } from '@/state';
+import { useFYActions, useFYDerivedState } from '@/state';
 import { Anchor, Badge } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { RNGButton } from '@rng-apps/forms';
@@ -63,7 +63,7 @@ export const RNGNavLink: React.FC<{
 };
 
 export const FYTitle: React.FC = () => {
-  const { baseUrl, company, fy } = useFYState();
+  const { baseUrl, company, fy } = useFYDerivedState();
   const router = useRouter();
 
   return (

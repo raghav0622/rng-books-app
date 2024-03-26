@@ -1,13 +1,13 @@
 'use client';
 
 import { CreateGroupSchema } from '@/schema';
-import { useFYStateDerivatives, useGroupActions } from '@/state';
+import { useFYDerivedState, useGroupActions } from '@/state';
 import { RNGForm } from '@rng-apps/forms';
 
 const FormGroupCreate: React.FC<{ onSuccess?: () => void }> = ({
   onSuccess,
 }) => {
-  const { createGroupsOption } = useFYStateDerivatives();
+  const { createGroupOptions: createGroupsOption } = useFYDerivedState();
   const { createGroup } = useGroupActions();
 
   return (
@@ -20,7 +20,7 @@ const FormGroupCreate: React.FC<{ onSuccess?: () => void }> = ({
         name: undefined,
         description: undefined,
         exploded: false,
-        childGroupsPossible: false,
+        childGroupsPossible: true,
         balanceCRLabel: undefined,
         balanceDRLabel: undefined,
       }}

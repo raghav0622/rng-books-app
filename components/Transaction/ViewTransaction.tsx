@@ -1,6 +1,6 @@
 'use client';
 
-import { useFYState, useGetDerived } from '@/state';
+import { useFYDerivedState } from '@/state';
 import {
   Anchor,
   Card,
@@ -12,11 +12,14 @@ import {
 import { currency, fireDate } from '@rng-apps/forms';
 import { useRouter } from 'next-nprogress-bar';
 import React from 'react';
+import { TransactionDerived } from '../../1-schema/schema-05-transaction-derived';
 import useReadTransaction from './useReadTransaction';
 
-const ViewTransaction: React.FC<{ id: string; book?: boolean }> = ({ id }) => {
-  const transaction = useGetDerived().getTransaction(id);
-  const { baseUrl } = useFYState();
+const ViewTransaction: React.FC<{
+  transaction: TransactionDerived;
+  book?: boolean;
+}> = ({ transaction }) => {
+  const { baseUrl } = useFYDerivedState();
   const router = useRouter();
   const theme = useMantineTheme();
 

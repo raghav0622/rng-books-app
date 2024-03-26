@@ -3,14 +3,14 @@
 import GroupDisplay from '@/components/Group/Group-Display';
 import PageContent from '@/components/Layout/PageContent';
 import TransactionHistory from '@/components/Transaction/TransactionHistory';
-import { useFYStateDerivatives } from '@/state';
+import { useFYDerivedState } from '@/state';
 import { Group, Paper, ScrollArea, Stack, Tabs } from '@mantine/core';
 import { useDevice } from '@rng-apps/forms';
 import { useRouter } from 'next-nprogress-bar';
 import { useSearchParams } from 'next/navigation';
 
 export default function FYHomePage() {
-  const { bsGroups, capitalGroups, baseUrl } = useFYStateDerivatives();
+  const { bsGroups, capitalGroups, baseUrl } = useFYDerivedState();
   const { isDesktop } = useDevice();
   const tab = useSearchParams().get('view');
   const router = useRouter();

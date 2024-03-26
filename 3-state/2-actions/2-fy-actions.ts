@@ -1,10 +1,11 @@
 import { useFYDB } from '@/db';
 import { cleanUndefined } from '@rng-apps/forms';
-import { useFYMetaState, useFYState } from '../1-atoms';
+import { useFYDBState, useFYMetaState, useFYState } from '../1-atoms';
 
 export const useFYActions = () => {
   const { updateFYMetaState } = useFYMetaState();
-  const { fyDB, fy } = useFYState();
+  const { fyDB } = useFYDBState();
+  const fy = useFYState();
   const { updateFY } = useFYDB();
 
   const canSaveFY = fyDB && fy.version !== fyDB.version;

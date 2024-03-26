@@ -11,12 +11,12 @@ import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import { FormError, cleanUndefined } from '@rng-apps/forms';
 import { v4 } from 'uuid';
-import { useBookState, useFYStateBase } from '../1-atoms';
+import { useBookState, useFYState } from '../1-atoms';
 import { useFYActions } from './2-fy-actions';
 import { useTransactionActions } from './4-transaction-actions';
 
 export const useBookActions = () => {
-  const { books } = useFYStateBase();
+  const { books } = useFYState();
   const { fyAction } = useFYActions();
   const { addBookState, deleteBookState, getBookState, updateBookState } =
     useBookState();

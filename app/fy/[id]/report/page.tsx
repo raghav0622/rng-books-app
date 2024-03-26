@@ -2,10 +2,10 @@
 
 import GroupCard from '@/components/Group/Group-Report';
 import PageContent from '@/components/Layout/PageContent';
-import { useFYStateDerivatives } from '@/state';
+import { useFYDerivedState } from '@/state';
 
 export default function FYHomePage() {
-  const { bsGroups, capitalGroups } = useFYStateDerivatives();
+  const { bsGroups, capitalGroups } = useFYDerivedState();
 
   return (
     <>

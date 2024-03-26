@@ -27,7 +27,6 @@
     "app/AppLayout.tsx": true,
     "app/AppProviders.tsx": true,
     "app/Authorization.tsx": true,
-    "app/layout-client.tsx": true,
     "app/layout.tsx": true,
     "app/page.tsx": true,
     "app/auth": true
@@ -54,7 +53,6 @@
     "app/AppLayout.tsx",
     "app/AppProviders.tsx",
     "app/Authorization.tsx",
-    "app/layout-client.tsx",
     "app/layout.tsx",
     "app/page.tsx",
     "app/auth"
