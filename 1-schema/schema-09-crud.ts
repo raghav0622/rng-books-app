@@ -218,7 +218,6 @@ export const CreateGroupSchema = GroupSchema.pick({
   name: true,
   balanceCRLabel: true,
   balanceDRLabel: true,
-  childGroupsPossible: true,
   description: true,
   exploded: true,
 }).extend({

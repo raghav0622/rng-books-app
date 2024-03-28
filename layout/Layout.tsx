@@ -2,7 +2,7 @@
 import { useFYActions } from '@/state';
 import { notifications } from '@mantine/notifications';
 import React, { PropsWithChildren, useEffect } from 'react';
-import FYProvider from '../Providers/FYProvider';
+import FYProvider from '../providers/FYProvider';
 import LayoutHeader from './LayoutHeader';
 
 const FYLayoutWrapper: React.FC<PropsWithChildren> = ({ children }) => {

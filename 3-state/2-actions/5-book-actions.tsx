@@ -27,8 +27,6 @@ export const useBookActions = () => {
       (book) => book.name.trim().toLowerCase() === name.trim().toLowerCase()
     ).length <= 0;
 
-  // const isNewBookValid = () => {}
-
   const createLedger = async ({
     name,
     parentGroup,
@@ -141,7 +139,7 @@ export const useBookActions = () => {
     isFD?: boolean
   ) => {
     if (!isBookNameUnique(name)) {
-      throw new FormError('Account Name must be unique', 'name');
+      throw new FormError('Book Name must be unique', 'name');
     }
 
     const payload: BookBase = {
@@ -152,8 +150,8 @@ export const useBookActions = () => {
       editable: true,
       id: v4(),
       ifscCode,
-      isBankAccount: true,
-      isSelfBook: true,
+      isBankAccount: isBankAccount,
+      isSelfBook: isSelfBook,
       lastTransactionDate: null,
       locked: false,
       name,
@@ -177,7 +175,7 @@ export const useBookActions = () => {
     notifications.show({
       color: 'green',
       title: 'Success!',
-      message: 'Account: ' + payload.name + ', Successfully created!',
+      message: 'Book: ' + payload.name + ', Successfully created!',
     });
 
     fyAction();

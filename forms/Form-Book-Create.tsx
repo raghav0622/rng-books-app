@@ -76,9 +76,6 @@ const FormBookCreateGeneralAccount: React.FC<{
         isSelfBook: isFa,
         name: undefined,
       }}
-      onChange={(t) => {
-        console.log(t);
-      }}
       uiSchema={[
         {
           name: 'parentGroup',
@@ -154,7 +151,6 @@ const FormBookCreateGeneralAccount: React.FC<{
       ]}
       onSubmit={async (payload) => {
         await createGeneralAccount(payload);
-
         if (onSuccess) onSuccess();
       }}
     />

@@ -7,7 +7,7 @@ import { useSigninCheck } from 'reactfire';
 import AppLayout from './AppLayout';
 import AppLoader from './loading';
 
-import UserDataProvider from '@/components/Providers/UserProvider';
+import UserDataProvider from '@/providers/UserProvider';
 
 const Authorization: React.FC<React.PropsWithChildren> = ({ children }) => {
   const {

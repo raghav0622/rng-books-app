@@ -1,7 +1,7 @@
 'use client';
 
-import PageContent from '@/components/Layout/PageContent';
-import BookPageByID from '@/components/Pages/Page-BookByID';
+import PageContent from '@/layout/PageContent';
+import BookPageByID from '@/screens/Page-BookByID';
 
 export default function BookByIDPage({
   params: { book_id: id },

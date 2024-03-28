@@ -1,9 +1,9 @@
 'use client';
 
+import FormGroupCreate from '@/forms/Form-Group-Create';
 import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
-import FormTransactionCreate from '../Forms/Form-Transaction-Create';
 
-const DrawerTransactionCreate: React.FC<{
+const DrawerAddGroup: React.FC<{
   trigger: RNGDrawerProps['trigger'];
 }> = ({ trigger }) => {
   const { isDesktop } = useDevice();
@@ -14,12 +14,12 @@ const DrawerTransactionCreate: React.FC<{
         offset: 8,
         radius: 'md',
         position: isDesktop ? 'right' : 'bottom',
-        title: 'Add Transaction Voucher',
+        title: 'Create New Group',
       }}
-      content={(close) => <FormTransactionCreate onSuccess={close} />}
+      content={(close) => <FormGroupCreate onSuccess={close} />}
       trigger={trigger}
     />
   );
 };
 
-export default DrawerTransactionCreate;
+export default DrawerAddGroup;

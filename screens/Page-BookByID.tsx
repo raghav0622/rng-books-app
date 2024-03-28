@@ -11,8 +11,8 @@ import {
 } from '@mantine/core';
 import { currency } from '@rng-apps/forms';
 import { redirect } from 'next/navigation';
-import DrawerTransacttionCreateCarry from '../Drawers/Drawer-Transaction-Create-Carry';
-import ViewTransactionTableInBook from '../Transaction/ViewTransactionTableInBook';
+import ViewTransactionTableInBook from '../components/Transaction/ViewTransactionTableInBook';
+import DrawerTransacttionCreateCarry from '../drawers/Drawer-Transaction-Create-Carry';
 
 function PageBookById({ book_id: id }: { book_id: string }) {
   const { baseUrl } = useFYDerivedState();

@@ -1,8 +1,8 @@
 'use client';
 
 import GroupDisplay from '@/components/Group/Group-Display';
-import PageContent from '@/components/Layout/PageContent';
 import TransactionHistory from '@/components/Transaction/TransactionHistory';
+import PageContent from '@/layout/PageContent';
 import { useFYDerivedState } from '@/state';
 import { Group, Paper, ScrollArea, Stack, Tabs } from '@mantine/core';
 import { useDevice } from '@rng-apps/forms';

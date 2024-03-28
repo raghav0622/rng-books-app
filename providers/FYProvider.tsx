@@ -1,5 +1,4 @@
 'use client';
-
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCompanyDB, useFYResource } from '@/db';
 import { CompanyFY } from '@/schema';

@@ -2,9 +2,9 @@
 import { useFYDerivedState } from '@/state';
 import { Divider, Group, ScrollArea } from '@mantine/core';
 import { RNGButton, SlotContent, useDevice } from '@rng-apps/forms';
-import DrawerBookCreate from '../Drawers/Drawer-Book-Create';
-import DrawerAddGroup from '../Drawers/Drawer-Group-Add';
-import DrawerTransactionCreate from '../Drawers/Drawer-Transaction-Create';
+import DrawerBookCreate from '../drawers/Drawer-Book-Create';
+import DrawerAddGroup from '../drawers/Drawer-Group-Add';
+import DrawerTransactionCreate from '../drawers/Drawer-Transaction-Create';
 import { FYTitle, RNGNavLink, useFYCommonActions } from './common';
 
 const LayoutHeader: React.FC = () => {

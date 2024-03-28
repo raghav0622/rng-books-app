@@ -2,7 +2,7 @@
 import { Book } from '@/schema';
 import { useBookActions } from '@/state';
 import { RNGButton } from '@rng-apps/forms';
-import DrawerBookEdit from '../Drawers/Drawer-Ledger-Edit';
+import DrawerBookEdit from '../../drawers/Drawer-Ledger-Edit';
 
 const ActionsBook: React.FC<{ book: Book }> = ({ book }) => {
   const { deleteBook } = useBookActions();

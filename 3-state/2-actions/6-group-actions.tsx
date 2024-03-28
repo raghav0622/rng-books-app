@@ -2,10 +2,11 @@ import { CreateGroup, Group } from '@/schema';
 import { notifications } from '@mantine/notifications';
 import { cleanUndefined } from '@rng-apps/forms';
 import { v4 } from 'uuid';
-import { useGroupState } from '../1-atoms';
+import { useFYState, useGroupState } from '../1-atoms';
 import { useFYActions } from './2-fy-actions';
 
 export const useGroupActions = () => {
+  const fy = useFYState();
   const {
     addGroupState,
     // deleteGroupState,
@@ -15,6 +16,11 @@ export const useGroupActions = () => {
 
   const { fyAction } = useFYActions();
   // const { updateBookState } = useBookState();
+
+  const isGroupNameUnique = (name: string) =>
+    fy.groups.filter(
+      (group) => group.name.trim().toLowerCase() === name.trim().toLowerCase()
+    ).length <= 0;
 
   const createGroup = async (payload: CreateGroup) => {
     const group: Group = {
@@ -31,7 +37,7 @@ export const useGroupActions = () => {
       name: payload.name,
       description: payload.description,
       childCount: 0,
-      childGroupsPossible: payload.childGroupsPossible,
+      childGroupsPossible: true,
       category: payload.parentGroup.category,
       parentGroupName: payload.parentGroup.name,
     };

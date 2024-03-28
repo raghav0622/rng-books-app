@@ -20,7 +20,6 @@ const FormGroupCreate: React.FC<{ onSuccess?: () => void }> = ({
         name: undefined,
         description: undefined,
         exploded: false,
-        childGroupsPossible: true,
         balanceCRLabel: undefined,
         balanceDRLabel: undefined,
       }}

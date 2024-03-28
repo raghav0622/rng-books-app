@@ -1,8 +1,9 @@
 'use client';
-import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
-import FormBookCreate from '../Forms/Form-Book-Create';
 
-const DrawerBookCreate: React.FC<{
+import FormTransactionCreate from '@/forms/Form-Transaction-Create';
+import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
+
+const DrawerTransactionCreate: React.FC<{
   trigger: RNGDrawerProps['trigger'];
 }> = ({ trigger }) => {
   const { isDesktop } = useDevice();
@@ -13,12 +14,12 @@ const DrawerBookCreate: React.FC<{
         offset: 8,
         radius: 'md',
         position: isDesktop ? 'right' : 'bottom',
-        title: 'Create New Book',
+        title: 'Add Transaction Voucher',
       }}
-      content={(close) => <FormBookCreate onSuccess={close} />}
+      content={(close) => <FormTransactionCreate onSuccess={close} />}
       trigger={trigger}
     />
   );
 };
 
-export default DrawerBookCreate;
+export default DrawerTransactionCreate;

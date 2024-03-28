@@ -1,9 +1,8 @@
 'use client';
-
+import FormBookCreate from '@/forms/Form-Book-Create';
 import { RNGDrawer, RNGDrawerProps, useDevice } from '@rng-apps/forms';
-import FormGroupCreate from '../Forms/Form-Group-Create';
 
-const DrawerAddGroup: React.FC<{
+const DrawerBookCreate: React.FC<{
   trigger: RNGDrawerProps['trigger'];
 }> = ({ trigger }) => {
   const { isDesktop } = useDevice();
@@ -14,12 +13,12 @@ const DrawerAddGroup: React.FC<{
         offset: 8,
         radius: 'md',
         position: isDesktop ? 'right' : 'bottom',
-        title: 'Create New Group',
+        title: 'Create New Book',
       }}
-      content={(close) => <FormGroupCreate onSuccess={close} />}
+      content={(close) => <FormBookCreate onSuccess={close} />}
       trigger={trigger}
     />
   );
 };
 
-export default DrawerAddGroup;
+export default DrawerBookCreate;
