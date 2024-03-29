@@ -1,9 +1,13 @@
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
-import { theme } from './theme';
+import { theme } from '../../app/theme';
 
 import './globals.css';
+
+const LayoutClient = dynamic(() => import('./layout-client'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,7 +40,9 @@ export default function RootLayout({
         }
       >
         <MantineProvider theme={theme}>
-          <>{children}</>
+          <ModalsProvider modalProps={{}}>
+            <LayoutClient>{children}</LayoutClient>
+          </ModalsProvider>
         </MantineProvider>
       </body>
     </html>

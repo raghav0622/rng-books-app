@@ -6,10 +6,9 @@ import { RNGForm, string } from '@rng-apps/forms';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { z } from 'zod';
+type FormProps<P = {}> = { onSuccess?: () => void } & P;
 
-const FormTransactionCreate: React.FC<{
-  onSuccess?: () => void;
-}> = ({ onSuccess }) => {
+const FormTransactionCreate: React.FC<FormProps> = ({ onSuccess }) => {
   const { ledgers, selfBooks, fy } = useFYDerivedState();
   const pathname = usePathname().split('/');
   const pathBook = pathname[3] === 'book' ? pathname[4] : undefined;
@@ -34,7 +33,7 @@ const FormTransactionCreate: React.FC<{
             name: 'primaryBook',
             type: 'autocomplete-basic',
             label: 'Primary Book',
-            groupBy: 'type',
+            groupBy: 'parentGroupName',
             getOptionLabel: (opt) => opt.name,
             getOptionValue: (opt) => opt.id,
             options: selfBooks,
@@ -63,7 +62,7 @@ const FormTransactionCreate: React.FC<{
             name: 'secondaryBook',
             type: 'autocomplete-basic',
             label: 'Secondary Book',
-            groupBy: 'type',
+            groupBy: 'parentGroupName',
             getOptionLabel: (opt) => opt.name,
             getOptionValue: (opt) => opt.id,
             options: fy.books.filter(

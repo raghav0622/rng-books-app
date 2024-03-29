@@ -1,0 +1,23 @@
+book 
+    create account / ledger done
+    edit not done
+
+    delete not done
+        delete all entries
+        merge all entries to other book and delete
+
+    convert to other type of book
+
+    read not done
+
+group
+    create
+    read
+    update
+    delete
+
+transaction 
+    create
+    read
+    update
+    delete

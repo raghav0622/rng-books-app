@@ -1,7 +1,7 @@
 'use client';
 
 import PageContent from '@/layout/PageContent';
-import BookPageByID from '@/screens/Page-BookByID';
+import BookPageByID from '@/screens/Book-View-Screen';
 
 export default function BookByIDPage({
   params: { book_id: id },

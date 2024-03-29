@@ -1,6 +1,6 @@
 import { CreateGroup, Group } from '@/schema';
 import { notifications } from '@mantine/notifications';
-import { cleanUndefined } from '@rng-apps/forms';
+import { FormError, cleanUndefined } from '@rng-apps/forms';
 import { v4 } from 'uuid';
 import { useFYState, useGroupState } from '../1-atoms';
 import { useFYActions } from './2-fy-actions';
@@ -23,6 +23,9 @@ export const useGroupActions = () => {
     ).length <= 0;
 
   const createGroup = async (payload: CreateGroup) => {
+    if (!isGroupNameUnique(payload.name)) {
+      throw new FormError('Group Name must be unique', 'name');
+    }
     const group: Group = {
       balance: 0,
       editable: true,

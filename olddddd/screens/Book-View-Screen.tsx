@@ -14,7 +14,7 @@ import { redirect } from 'next/navigation';
 import ViewTransactionTableInBook from '../components/Transaction/ViewTransactionTableInBook';
 import DrawerTransacttionCreateCarry from '../drawers/Drawer-Transaction-Create-Carry';
 
-function PageBookById({ book_id: id }: { book_id: string }) {
+function BookViewScreen({ book_id: id }: { book_id: string }) {
   const { baseUrl } = useFYDerivedState();
   const { getBook } = useGetDerived();
   const theme = useMantineTheme();
@@ -64,4 +64,4 @@ function PageBookById({ book_id: id }: { book_id: string }) {
   );
 }
 
-export default PageBookById;
+export default BookViewScreen;
