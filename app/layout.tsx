@@ -1,11 +1,15 @@
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { CssBaseline } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
 import { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import dynamic from 'next/dynamic';
+import Authorization from './auth-wrapper';
+import './globals.css';
 import { theme } from './theme';
 
-import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
+const RootProvider = dynamic(() => import('@/providers/RootProvider'), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: 'RNG Books',
@@ -25,19 +29,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <ColorSchemeScript />
-      </head>
-
       <body
         className={
-          'relative flex flex-col h-[100dvh] w-[100dvw] max-w-[100dvw] max-h-[100dvh] overflow-hidden ' +
-          inter.className
+          'relative flex flex-col h-[100dvh] w-[100dvw] max-w-[100dvw] max-h-[100dvh] gap-2'
         }
       >
-        <MantineProvider theme={theme}>
-          <>{children}</>
-        </MantineProvider>
+        <RootProvider>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Authorization>{children}</Authorization>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </RootProvider>
       </body>
     </html>
   );

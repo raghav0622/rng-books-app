@@ -12,7 +12,7 @@ import {
 import { currency, fireDate } from '@rng-apps/forms';
 import { useRouter } from 'next-nprogress-bar';
 import React from 'react';
-import { TransactionDerived } from '../../1-schema/schema-05-transaction-derived';
+import { TransactionDerived } from '../../../1-schema/schema-05-transaction-derived';
 import useReadTransaction from './useReadTransaction';
 
 const ViewTransaction: React.FC<{

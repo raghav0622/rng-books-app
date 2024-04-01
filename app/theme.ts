@@ -1,4 +1,18 @@
 'use client';
-import { createTheme } from '@mantine/core';
+import { createTheme } from '@mui/material/styles';
+import { Roboto } from 'next/font/google';
 
-export const theme = createTheme({});
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+export const theme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+  typography: {
+    fontFamily: roboto.style.fontFamily,
+  },
+});

@@ -21,7 +21,7 @@ import {
   GroupDerived,
   Transaction,
   TransactionDerived,
-} from '../../1-schema';
+} from '../../../1-schema';
 
 export const TransactionsIdAtom = atom<string[]>({
   key: 'transaction-ids',
