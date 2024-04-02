@@ -17,7 +17,7 @@ export function renderFormItem<Schema extends z.ZodTypeAny>(
   item: FormItem<Schema>,
   key: string
 ) {
-  if (item.type === 'text') {
+  if (item.type === 'text' || item.type === 'password') {
     return <RNGTextInput key={key} {...item} />;
   }
   // if (item.type === 'password') {

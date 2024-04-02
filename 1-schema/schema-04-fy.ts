@@ -1,6 +1,6 @@
 'use client';
 
-import { boolean, number, string } from '@/rng-forms';
+import { boolean, number, string } from '@/utils';
 import z from 'zod';
 import { TransactionSchema } from './schema-01-transaction';
 import { BookSchema } from './schema-02-book';

@@ -1,6 +1,6 @@
 'use client';
 
-import { date, number, optionalString, string } from '@/rng-forms';
+import { date, number, optionalString, string } from '@/utils';
 
 import z from 'zod';
 

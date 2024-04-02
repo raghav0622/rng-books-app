@@ -2,15 +2,17 @@
 import { useAuthAPI, useCurrentUser } from '@/db';
 import {
   Avatar,
+  Divider,
   IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   Menu,
   MenuItem,
   Tooltip,
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const UserMenu = () => {
   const user = useCurrentUser();
@@ -34,7 +36,11 @@ const UserMenu = () => {
           <Avatar
             alt={user.name}
             src={user.photoUrl || undefined}
-            sx={{ width: 36, height: 36 }}
+            sx={(t) => ({
+              width: 36,
+              height: 36,
+              bgcolor: t.palette.primary.main,
+            })}
           >
             {user.name[0]}
           </Avatar>
@@ -54,8 +60,28 @@ const UserMenu = () => {
           horizontal: 'right',
         }}
         open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
+        onClose={() => setAnchorElUser(null)}
       >
+        <MenuItem onClick={() => setAnchorElUser(null)}>
+          <ListItem sx={{ p: 0 }}>
+            <ListItemAvatar sx={{ mr: -1 }}>
+              <Avatar
+                alt={user.name}
+                src={user.photoUrl || undefined}
+                sx={(t) => ({
+                  width: 36,
+                  height: 36,
+                  bgcolor: t.palette.primary.main,
+                })}
+              >
+                {user.name[0]}
+              </Avatar>
+            </ListItemAvatar>
+
+            <ListItemText primary={user.name} secondary={user.email} />
+          </ListItem>
+        </MenuItem>
+        <Divider />
         <MenuItem
           onClick={async () => {
             await handleCloseUserMenu(async () => {

@@ -1,5 +1,5 @@
 'use client';
-import { email, string } from '@/rng-forms';
+import { email, string } from '@/utils';
 import { z } from 'zod';
 
 export const UserSignInSchema = z.object({

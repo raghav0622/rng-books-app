@@ -1,5 +1,4 @@
 'use client';
-import { PasswordInput, PasswordInputProps } from '@mantine/core';
 import { useController } from 'react-hook-form';
 import { z } from 'zod';
 import { useRNGFormCtx } from './0-context';
@@ -38,6 +37,16 @@ export function RNGPasswordInput<Schema extends z.ZodTypeAny>({
   valueOnNoRender,
   ...rest
 }: RNGPasswordInputProps<Schema>) {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
   const {
     field: { value, name: givenName, onChange, ref },
     fieldState: { error },

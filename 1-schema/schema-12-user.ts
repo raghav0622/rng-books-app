@@ -1,5 +1,5 @@
 'use client';
-import { boolean, email, optionalString, string } from '@/rng-forms';
+import { boolean, email, optionalString, string } from '@/utils';
 import z from 'zod';
 import { CompanySchema } from './schema-10-company';
 

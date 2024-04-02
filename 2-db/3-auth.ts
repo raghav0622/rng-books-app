@@ -1,6 +1,6 @@
 'use client';
-import { FormError } from '@/rng-forms';
 import { User, UserSignIn, UserSignUp } from '@/schema';
+import { FormError } from '@/utils';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,

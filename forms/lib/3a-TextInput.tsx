@@ -1,12 +1,17 @@
 'use client';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { TextField, TextFieldProps } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import * as React from 'react';
 import { useController } from 'react-hook-form';
 import { z } from 'zod';
 import { useRNGFormCtx } from './0-context';
 import { BaseItem } from './1-common';
 import { FieldWrapper } from './2-wrapper';
 
-type BaseTextInputProps = { type: 'text' } & Omit<
+type BaseTextInputProps = { type: 'text' | 'password' } & Omit<
   TextFieldProps,
   | 'description'
   | 'error'
@@ -38,6 +43,16 @@ export function RNGTextInput<Schema extends z.ZodTypeAny>({
   valueOnNoRender,
   ...rest
 }: RNGTextInputProps<Schema>) {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
   const {
     field: { value, name: givenName, onChange, ref },
     fieldState: { error },
@@ -72,6 +87,22 @@ export function RNGTextInput<Schema extends z.ZodTypeAny>({
         disabled={isSubmitting || disabled}
         autoFocus={autoFocus}
         fullWidth
+        type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
+        InputProps={{
+          endAdornment:
+            type === 'password' ? (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ) : undefined,
+        }}
         {...rest}
       />
     </FieldWrapper>

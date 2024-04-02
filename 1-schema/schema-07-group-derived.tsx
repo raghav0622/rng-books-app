@@ -1,6 +1,6 @@
 'use client';
 
-import { string } from '@/rng-forms';
+import { string } from '@/utils';
 import { z } from 'zod';
 import { BookSchema } from './schema-02-book';
 import { GroupSchema } from './schema-03-group';

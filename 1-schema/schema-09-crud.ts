@@ -1,5 +1,5 @@
 'use client';
-import { numberNegative, numberPositive, string } from '@/rng-forms';
+import { numberNegative, numberPositive, string } from '@/utils';
 
 import z from 'zod';
 import { TransactionBaseSchema } from './schema-01-transaction';

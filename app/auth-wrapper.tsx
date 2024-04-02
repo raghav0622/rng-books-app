@@ -1,5 +1,6 @@
 'use client';
 
+import AppLayout from '@/layout/app-layout';
 import UserDataProvider from '@/providers/UserProvider';
 import { useRouter } from 'next-nprogress-bar';
 import { usePathname } from 'next/navigation';
@@ -35,7 +36,7 @@ const Authorization: React.FC<React.PropsWithChildren> = ({ children }) => {
   if (user && !isAuthPath) {
     return (
       <UserDataProvider id={user.uid}>
-        <>{children}</>
+        <AppLayout>{children}</AppLayout>
       </UserDataProvider>
     );
   } else return <RootLoader />;

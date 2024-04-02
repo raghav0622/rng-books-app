@@ -1,11 +1,11 @@
+import AppThemeProvider from '@/providers/ThemeProvider';
 import { CssBaseline } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { ThemeProvider } from '@mui/material/styles';
 import { Metadata, Viewport } from 'next';
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
 import dynamic from 'next/dynamic';
 import Authorization from './auth-wrapper';
 import './globals.css';
-import { theme } from './theme';
 
 const RootProvider = dynamic(() => import('@/providers/RootProvider'), {
   ssr: false,
@@ -28,20 +28,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={
-          'relative flex flex-col h-[100dvh] w-[100dvw] max-w-[100dvw] max-h-[100dvh] gap-2'
+          'relative flex flex-col h-[100dvh] w-[100dvw] max-w-[100dvw] max-h-[100dvh]'
         }
       >
-        <RootProvider>
-          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Authorization>{children}</Authorization>
-            </ThemeProvider>
-          </AppRouterCacheProvider>
-        </RootProvider>
+        <NextThemeProvider>
+          <AppThemeProvider>
+            <RootProvider>
+              <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+                <CssBaseline />
+                <Authorization>{children}</Authorization>
+              </AppRouterCacheProvider>
+            </RootProvider>
+          </AppThemeProvider>
+        </NextThemeProvider>
       </body>
     </html>
   );

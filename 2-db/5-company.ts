@@ -1,5 +1,5 @@
-import { FormError } from '@/rng-forms';
 import { Company, CompanyFYMeta, CreateCompany } from '@/schema';
+import { FormError } from '@/utils';
 import { kebabCase } from 'lodash';
 import { useCurrentUser } from './1-user-context';
 import { useUserDB } from './2-user';

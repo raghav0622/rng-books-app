@@ -1,6 +1,6 @@
 'use client';
-import { useCreateResource } from '@/rng-forms';
 import { CompanyFYSchema, UserSchema } from '@/schema';
+import { useCreateResource } from '@/utils';
 
 export const useUserResource = () =>
   useCreateResource({
